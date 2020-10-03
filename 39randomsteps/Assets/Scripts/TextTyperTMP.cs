@@ -18,6 +18,8 @@ public class TextTyperTMP : MonoBehaviour
 	private string textToType;
 	private TextMeshProUGUI textComponent;
 
+	public GameObject playbutton;
+
 	private void Awake()
 	{
 		textComponent = GetComponent<TextMeshProUGUI>();
@@ -37,6 +39,7 @@ public class TextTyperTMP : MonoBehaviour
 		if(startOnStart)
 		{
             StartTyping();
+			playbutton.SetActive(false);
 		}
 	}
 
@@ -49,6 +52,7 @@ public class TextTyperTMP : MonoBehaviour
 		else
 		{
 			Debug.LogWarning(gameObject.name + " : Is already typing!");
+			
 		}
 	}
 
@@ -57,6 +61,7 @@ public class TextTyperTMP : MonoBehaviour
         counter = 0;
         typing = false;
 		CancelInvoke("Type");
+		playbutton.SetActive(true);
 	}
 
     public void UpdateText(string newText)
@@ -65,7 +70,8 @@ public class TextTyperTMP : MonoBehaviour
         textComponent.text = "";
         textToType = newText;
         StartTyping();
-    }
+		
+	}
 
 	public void QuickSkip()
 	{
@@ -73,6 +79,7 @@ public class TextTyperTMP : MonoBehaviour
 		{
 			StopTyping();
 			textComponent.text = textToType;
+			playbutton.SetActive(true);
 		}
 	}
 

@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
 
     public static LevelManager obj;
+    public AudioClip clock;
     public Slider timerSlider;
     public float timeRemaining = 30;
     public bool timerIsRunning = false;
@@ -18,24 +19,27 @@ public class LevelManager : MonoBehaviour
     public GameObject MainMenuUi, LevelInfoUi, DiscussionPanel, Person1Talking, Person2Talking, Gameplay, interactedUIElementsParent, levelPassedPanal, levelFailedPanel;
     public Text objectInfoText;
     public GameObject[] talkingObject, interactableItems, interactedUIElements, LevelObjectsLogic_One, LevelObjectsLogic_Two;
+    private SoundManager sManger;
     // Start is called before the first frame update
     void Start()
     {
         obj = this;
         logicPatren = 0;
+        sManger = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
     void Update()
     {
-        
+
         if (timeRemaining > 0 && timerIsRunning)
         {
-            
+
             timeRemaining -= Time.deltaTime;
 
             timerSlider.value = timeRemaining;
 
+
         }
-        else if(timeRemaining<=0)
+        else if (timeRemaining <= 0)
         {
             LevelFailed();
         }
@@ -67,20 +71,40 @@ public class LevelManager : MonoBehaviour
         timerIsRunning = true;
         talkNumber = talkExternalValue;
         // talkingObject[talkNumber].SetActive(false);
-        if (talkNumber % 2 == 0)
+        if (talkNumber  == 0)
         {
             talkNumber += 1;
             talkingObject[talkNumber].SetActive(true);
         }
-        else
+        else if (talkNumber == 1)
         {
-            talkingObject[talkNumber].SetActive(false);
+            //talkingObject[talkNumber].SetActive(false);
             talkingObject[talkNumber - 1].SetActive(false);
             enableInteraction = true;
             talkNumber += 1;
             EnableInteraction();
-            
+            sManger.PlaySingle(clock);
+
         }
+        else if (talkNumber % 2 == 0)
+        {
+            //talkingObject[talkNumber].SetActive(false);
+            talkingObject[talkNumber - 1].SetActive(false);
+            enableInteraction = true;
+            talkNumber += 1;
+            EnableInteraction();
+            sManger.RandomizeSfx(clock);
+        }
+        else
+        {
+            talkNumber += 1;
+            talkingObject[talkNumber].SetActive(true);
+
+        }
+
+
+
+
 
     }
     public void EnableInteraction()
@@ -113,12 +137,14 @@ public class LevelManager : MonoBehaviour
     }
     private IEnumerator WaitAndPrint(float waitTime)
     {
-        timerIsRunning=false;
+        timerIsRunning = false;
+        sManger.PlaySingleStop();
         DisableInteraction();
         yield return new WaitForSeconds(waitTime);
         LevelManager.obj.interactedUIElementsParent.SetActive(false);
         ResetTimmer();
         timerIsRunning = true;
+        //sManger.RandomizeSfx(clock);
         if (logicPatren == 1 && logicPatrenValue < 7)
         {
             talkingObject[talkNumber].SetActive(true);
@@ -131,13 +157,14 @@ public class LevelManager : MonoBehaviour
         {
             LevelPassed();
             timerIsRunning = false;
+            sManger.PlaySingleStop();
         }
 
 
     }
     public void ResetTimmer()
     {
-        timeRemaining=30;
+        timeRemaining = 30;
     }
     public void LevelPassed()
     {
@@ -152,8 +179,17 @@ public class LevelManager : MonoBehaviour
     {
         Application.LoadLevel(Application.loadedLevel);
     }
-     public void Exit()
+    public void Exit()
     {
         Application.Quit();
+    }
+
+    public void SwitchOf(GameObject g)
+    {
+        if (g != null)
+
+        g.SetActive(false);
+
+
     }
 }

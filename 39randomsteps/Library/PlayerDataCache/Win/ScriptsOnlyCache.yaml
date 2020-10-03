@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Drag
     - LevelManager
     - ShakeBehavior
+    - SoundManager
     - TextTyperTMP
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
@@ -51,11 +52,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -88,19 +95,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10898}
     - Class: 114
-      Script: {instanceID: 11074}
+      Script: {instanceID: 11072}
     - Class: 114
-      Script: {instanceID: 11136}
+      Script: {instanceID: 11134}
     - Class: 114
-      Script: {instanceID: 11228}
+      Script: {instanceID: 11226}
     - Class: 114
-      Script: {instanceID: 11246}
+      Script: {instanceID: 11244}
     - Class: 114
-      Script: {instanceID: 11306}
+      Script: {instanceID: 11304}
     - Class: 114
-      Script: {instanceID: 11510}
+      Script: {instanceID: 11508}
     - Class: 114
-      Script: {instanceID: 11544}
+      Script: {instanceID: 11542}
+    - Class: 114
+      Script: {instanceID: 82150}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -192,7 +201,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 98a8270c38dac7d9c168dd6048ffa5db
+      Hash: 156642a99e1effbe660c076c66596dda
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TextTyperTMP
@@ -462,7 +471,7 @@ ScriptsOnlyBuild:
     className: Drag
   - hash:
       serializedVersion: 2
-      Hash: f3e602ed360bf14519af0d71dd129091
+      Hash: fb10908529e640728274fecfc4e89d23
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelManager
@@ -568,7 +577,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 6c12e2d7a51843c61381c2e495ab4fec
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/luqma/OneDrive/Desktop/39Steps/39randomsteps.exe
+  playerPath: K:/DATA/Unity/WorkProjects/AR/39-Random-Steps/39randomsteps/Build/39randomsteps.exe
