@@ -19,6 +19,14 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -29,6 +37,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Outline
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
@@ -73,43 +82,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9682}
     - Class: 114
-      Script: {instanceID: 9846}
+      Script: {instanceID: 9804}
     - Class: 114
-      Script: {instanceID: 9880}
+      Script: {instanceID: 9848}
     - Class: 114
-      Script: {instanceID: 9888}
+      Script: {instanceID: 9882}
     - Class: 114
-      Script: {instanceID: 10112}
+      Script: {instanceID: 9890}
     - Class: 114
-      Script: {instanceID: 10172}
+      Script: {instanceID: 10114}
     - Class: 114
-      Script: {instanceID: 10222}
+      Script: {instanceID: 10174}
     - Class: 114
-      Script: {instanceID: 10290}
+      Script: {instanceID: 10224}
     - Class: 114
-      Script: {instanceID: 10310}
+      Script: {instanceID: 10292}
     - Class: 114
-      Script: {instanceID: 10662}
+      Script: {instanceID: 10312}
     - Class: 114
-      Script: {instanceID: 10884}
+      Script: {instanceID: 10664}
     - Class: 114
-      Script: {instanceID: 10898}
+      Script: {instanceID: 10886}
     - Class: 114
-      Script: {instanceID: 11072}
+      Script: {instanceID: 10900}
     - Class: 114
-      Script: {instanceID: 11134}
+      Script: {instanceID: 11074}
     - Class: 114
-      Script: {instanceID: 11226}
+      Script: {instanceID: 11136}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 11228}
     - Class: 114
-      Script: {instanceID: 11304}
+      Script: {instanceID: 11246}
     - Class: 114
-      Script: {instanceID: 11508}
+      Script: {instanceID: 11306}
     - Class: 114
-      Script: {instanceID: 11542}
+      Script: {instanceID: 11454}
     - Class: 114
-      Script: {instanceID: 82150}
+      Script: {instanceID: 11510}
+    - Class: 114
+      Script: {instanceID: 11544}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -163,6 +174,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 6c12e2d7a51843c61381c2e495ab4fec
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundManager
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -577,12 +594,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 6c12e2d7a51843c61381c2e495ab4fec
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SoundManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

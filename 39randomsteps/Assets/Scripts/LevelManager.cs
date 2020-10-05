@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     public Text objectInfoText;
     public GameObject[] talkingObject, interactableItems, interactedUIElements, LevelObjectsLogic_One, LevelObjectsLogic_Two;
     private SoundManager sManger;
+    private bool endgame = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +55,7 @@ public class LevelManager : MonoBehaviour
     {
         LevelInfoUi.SetActive(false);
         DiscussionPanel.SetActive(true);
-        timerIsRunning = true;
+        //timerIsRunning = true;
     }
     public void Person1TalkingQuit()
     {
@@ -67,13 +68,14 @@ public class LevelManager : MonoBehaviour
     }
     public void SkipTextWriting(int talkExternalValue)
     {
-        ResetTimmer();
-        timerIsRunning = true;
+       
         talkNumber = talkExternalValue;
         // talkingObject[talkNumber].SetActive(false);
         if (talkNumber  == 0)
         {
+            //talkingObject[talkNumber - 1].SetActive(false);
             talkNumber += 1;
+            talkingObject[talkNumber - 1].SetActive(false);
             talkingObject[talkNumber].SetActive(true);
         }
         else if (talkNumber == 1)
@@ -81,9 +83,13 @@ public class LevelManager : MonoBehaviour
             //talkingObject[talkNumber].SetActive(false);
             talkingObject[talkNumber - 1].SetActive(false);
             enableInteraction = true;
+            talkingObject[talkNumber].GetComponentInChildren<Animator>().enabled = true;
             talkNumber += 1;
             EnableInteraction();
             sManger.PlaySingle(clock);
+            
+            ResetTimmer();
+            timerIsRunning = true;
 
         }
         else if (talkNumber % 2 == 0)
@@ -91,13 +97,19 @@ public class LevelManager : MonoBehaviour
             //talkingObject[talkNumber].SetActive(false);
             talkingObject[talkNumber - 1].SetActive(false);
             enableInteraction = true;
+            talkingObject[talkNumber].GetComponentInChildren<Animator>().enabled = true;
             talkNumber += 1;
             EnableInteraction();
             sManger.RandomizeSfx(clock);
+         
+            ResetTimmer();
+            timerIsRunning = true;
         }
         else
         {
+            talkingObject[talkNumber - 1].SetActive(false);
             talkNumber += 1;
+            talkingObject[talkNumber - 1].SetActive(false);
             talkingObject[talkNumber].SetActive(true);
 
         }
@@ -118,6 +130,9 @@ public class LevelManager : MonoBehaviour
             }
 
         }
+
+        talkingObject[talkNumber].GetComponentInChildren<Animator>().enabled = true;
+
     }
     public void DisableInteraction()
     {
@@ -130,6 +145,8 @@ public class LevelManager : MonoBehaviour
                 interactableItems[i].GetComponent<Collider2D>().enabled = false;
             }
         }
+
+        
     }
     public void DisablePanal()
     {
@@ -137,13 +154,14 @@ public class LevelManager : MonoBehaviour
     }
     private IEnumerator WaitAndPrint(float waitTime)
     {
+        talkingObject[talkNumber].GetComponentInChildren<Animator>().enabled = false;
         timerIsRunning = false;
         sManger.PlaySingleStop();
         DisableInteraction();
         yield return new WaitForSeconds(waitTime);
         LevelManager.obj.interactedUIElementsParent.SetActive(false);
-        ResetTimmer();
-        timerIsRunning = true;
+        // ResetTimmer();
+        //timerIsRunning = true;
         //sManger.RandomizeSfx(clock);
         if (logicPatren == 1 && logicPatrenValue < 7)
         {
@@ -157,6 +175,7 @@ public class LevelManager : MonoBehaviour
         {
             LevelPassed();
             timerIsRunning = false;
+            talkingObject[talkNumber].GetComponentInChildren<Animator>().enabled = false;
             sManger.PlaySingleStop();
         }
 
@@ -190,6 +209,14 @@ public class LevelManager : MonoBehaviour
 
         g.SetActive(false);
 
+
+    }
+
+    public bool EndGame(bool x)
+    {
+        endgame = x;
+
+        return endgame;
 
     }
 }

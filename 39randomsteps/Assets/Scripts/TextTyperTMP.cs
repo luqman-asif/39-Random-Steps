@@ -99,6 +99,7 @@ public class TextTyperTMP : MonoBehaviour
 		{	
 			typing = false;
 			CancelInvoke("Type");
+			playbutton.SetActive(true);
 		}
 	}
 
